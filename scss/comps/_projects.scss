@@ -1,0 +1,103 @@
+.projects{
+    width: 100%;
+    height: auto;
+
+    padding: 25px 15px;
+
+    background: color(blue, xlight);
+
+    // li + li {
+    //     margin-left: 5px;
+    // }
+
+    &__card{
+        border-radius: 15px;
+        &+&{
+            margin-top: 25px;
+        }
+        &__top{
+            width: 100%;
+            height: 150px;
+            
+            background:color(blue, base, .5);
+            
+            border-top-left-radius: $card-border-radius;
+            border-top-right-radius: $card-border-radius;
+        }
+        &__bottom{
+            width: 100%;
+            height: auto;
+
+            background: color(white);
+            
+            border-bottom-left-radius: $card-border-radius;
+            border-bottom-right-radius: $card-border-radius;
+            
+            padding: 15px;
+
+            @include grid($temp: 30px auto 60px / 3fr 1fr, $areas: "title button" "desc button" "langs button"){
+                align-items: center;
+                grid-column-gap: 15px;
+            }
+
+            &__title{
+                grid-area: title;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            &__desc{
+                grid-area: desc;
+                margin: 5px 0;
+                font-weight: 100;
+                font-style: italic;
+            }
+
+            &__langs{
+                grid-area: langs;
+                li{
+                    display: inline-block;
+
+                    background: color(blue);
+
+                    padding: 5px 10px;
+
+                    color:white;
+                    font-weight: 100;
+
+                    // border-radius: 6px;
+
+                    &:nth-last-of-type(2n+0) {
+                        background:color(blue,xlight);
+                    }
+                    
+                }
+            }
+
+            &__github{
+                grid-area: button;
+
+                @include flex{
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                justify-self: center;
+                align-self: center;
+                
+                width: 100%;
+                height: 50%;
+                text-align: center;
+
+                color:color(white);
+                text-decoration: none;
+                font-size: 1.3rem;
+                font-style: italic;
+
+                border-radius: 6px;
+                
+                background: color(blue);
+            }
+        }
+    }
+}

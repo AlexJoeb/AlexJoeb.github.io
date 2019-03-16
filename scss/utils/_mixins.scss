@@ -1,0 +1,113 @@
+@mixin flex($dir: row, $wrap: nowrap) {
+    & {
+        display: flex;
+        flex-direction: $dir;
+        flex-wrap: $wrap;
+        @content;
+    }
+}
+
+@mixin grid($temp: 1fr #{"/"} 1fr, $areas: none) {
+    & {
+        display: grid;
+        grid-template: $temp;
+        grid-template-areas: $areas;
+        @content;
+    }
+}
+
+@mixin mq($break) {
+    @if map-has-key($map: $break-points, $key: $break) {
+        & {
+            @media only screen and (min-width: map-get($map: $break-points, $key: $break)) {
+                @content;
+            }
+        }
+    }
+
+    @else {
+        @warn "#{$break} key was not found in the break-points map.";
+    }
+}
+
+@mixin btn($color: blue, $size: "regular") {
+    & {
+        border:0;
+        border-radius: 3px;
+
+        @if $color == blue {
+            background-color: color(blue);
+            border-right: 3px solid color(blue, dark);
+            border-bottom: 3px solid color(blue, dark);
+        } @else if $color == green {
+            background-color: color(green);
+            border-right: 3px solid color(green, dark);
+            border-bottom: 3px solid color(green, dark);
+        } @else if $color == red {
+            background-color: color(red);
+            border-right: 3px solid color(red, dark);
+            border-bottom: 3px solid color(red, dark);
+        }
+
+        @if $size == "small" {
+            padding:2px 5px;
+        } @else if $size == "regular" {
+            padding: 5px 10px;
+        } @else if $size == "large" {
+            padding: 8px 20px;
+        }
+
+        color: color(white);
+    }
+}
+
+@mixin input {
+    & {
+        border: 0;
+        border-radius: 5px;
+        border-right: 3px solid color(white, dark);
+        border-bottom: 3px solid color(white, dark);
+        background-color: color(white);
+
+        @extend %nohighlight;
+
+        padding: 5px 15px;
+
+        color: color(gray, xdark);
+    }
+}
+
+@mixin textarea {
+    & {
+        border: 0;
+        border-radius: 5px;
+        border-right: 3px solid color(white, dark);
+        border-bottom: 3px solid color(white, dark);
+        background-color: color(white);
+
+        @extend %nohighlight;
+
+        padding: 5px 15px;
+
+        color: color(gray, xdark);
+
+        resize: none;
+    }
+}
+
+@mixin tag {
+    & {
+        display: inline-block;
+        border: 0;
+        border-radius: 5px;
+        border-right: 3px solid color(blue);
+        border-bottom: 3px solid color(blue);
+        background-color: color(blue);
+
+        padding: 2.5px 5px;
+
+        font-weight: 100;
+        
+        color: color(white);
+    }
+}

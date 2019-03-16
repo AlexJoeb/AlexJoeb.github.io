@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+    font-family: $font__stack--primary !important;
+}
+
+html, body{
+    background-color:color(white);
+    position: relative;
+}
+
+.divider {
+    width: 100%;
+    height: 3px;
+
+    background:color(white);
+
+    margin: 25px auto;
+}
+
+.hamburger{
+    height: 11px;
+    width: 25px;
+    &:hover{
+        cursor: pointer;
+    }
+
+    &__slice{
+        @extend %slice;
+    }
+
+    &.close &__slice{
+        position: relative;
+        z-index: 1000;
+    }
+
+    &.close &__slice:nth-of-type(1){
+        top:24px;
+        transform: rotate(45deg);
+    }
+
+    &.close &__slice:nth-of-type(2){
+        top:16px;
+        transform: rotate(-45deg);
+    }
+}
+
+svg{
+    height: auto;
+    width: 25px;
+    path{
+        fill: color(white);
+    }
+}

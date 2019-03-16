@@ -1,0 +1,83 @@
+.sidebar {
+    width: 100%;
+    height: auto;
+
+    background: color(blue, light);
+
+    color:color(white);
+
+    // box-shadow: 0 5px 10px color(gray, base, .8);
+
+    span{
+        font-weight: 100;
+    }
+
+    strong{
+        font-size: 1.4rem;
+        display:block;
+        margin-top: 15px;
+    }
+
+    em{
+        font-style: italic;
+    }
+
+    &__topbar{
+        width: 100%;
+        height: 40px;
+
+        padding: 0 15px;
+
+        background:color(blue, base);
+
+        @include flex{
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__mheader{
+        height: 100%;
+
+        padding: 15px 15px;
+        @include flex($dir: column){
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__contactme{
+            width: 100%;
+            height: 30px;
+
+            border: 0;
+            border-radius: 5px;
+            border-right: 2px solid color(blue, xdark);
+            border-bottom: 2px solid color(blue, xdark);
+
+            background:color(blue,base);
+
+            color:color(white);
+            font-weight: 400;
+            font-size: 1.125rem;
+
+
+        }
+
+        &__picture{
+            width: $profile-picture-size;
+            height: $profile-picture-size;
+
+            border-radius: 100px;
+
+            background:url("../../Images/portrait.jpg") no-repeat center -10px, color(blue,xdark);
+            background-size:100%;
+            margin-bottom: 35px;
+        }
+
+        &__desc{
+            position: relative;
+            bottom: 15px;
+            text-align: center;
+        }
+    }
+}

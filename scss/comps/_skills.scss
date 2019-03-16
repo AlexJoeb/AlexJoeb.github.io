@@ -1,0 +1,54 @@
+.skills {
+    @include flex($wrap: wrap);
+    
+    padding: 25px 15px;
+
+    &__dev {
+        flex-basis: 100%;
+        padding: 0 15px 25px;
+
+        background:white;
+        border-radius: 10px;
+
+        @include grid($temp: 50px 1fr / 1fr, $areas: "top" "bottom");
+
+        &__icon{
+            grid-area: top;
+            justify-self: center;
+            align-self: center;
+
+            padding: 5px 10px;
+            transform: scale(2);
+        }
+
+        &--d, &--pf, &--o, &--ss{
+            &__header{
+                color:color(black);
+                font-style: italic;
+                font-weight: 100;
+                margin-bottom: 10px;
+            }
+
+            &__languages, &__pfw, &__other, &__softskills{
+                li{
+                    display: inline-block;
+
+                    background: color(blue);
+                    color:color(white);
+
+                    padding: 5px 10px;
+
+                    &:nth-of-type(2n+0){
+                        background:color(blue, xlight);
+                    }
+                }
+            }
+        }
+
+        &--pf, &--o, &--ss{
+            &__header{
+                margin-top: 10px;
+            }
+        }
+    }
+}
