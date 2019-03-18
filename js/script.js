@@ -114,24 +114,33 @@ const getProjectByID = id => {
 }
 
 const fillProjects = () => {
+    getProjectByID(175998035).show = false;
     projects.forEach(p => {
-        const markup = `
-            <div id="${p.id}" class="projects__card">
-                <div id="${p.id}" class="projects__card__top"></div>
+        console.log(p.title + " : " + p.id + " : " + p.picture);
+        let markup = `
+            <div class="projects__card">
+                <div class="projects__card__top ${p.id}"></div>
                 <div class="projects__card__bottom">
                     <p class="projects__card__bottom__title">${p.title}</p>
                     <p class="projects__card__bottom__desc">${p.desc}</p>
-                    <ul id="${p.id}" class="projects__card__bottom__langs">
+                    <ul class="projects__card__bottom__langs ${p.id}">
                     </ul>
-                    <a href="${p.githubLink}" class="projects__card__bottom__github">See Code</a>
+                    <a href="${p.githubLink}" class="projects__card__bottom__github">See <br>Code</a>
                 </div>
             </div>
         `;
+        
+        if(!p.show){
+            markup = ``;
+        }
 
         const temp = $(`${markup}`);
 
+        
         projDiv.append(temp);
-
+        $(`.projects__card__top.${p.id}`).css('background', `url(${p.picture}) no-repeat center center`);
+        $(`.projects__card__top.${p.id}`).css('background-size', `cover`);
+        
     });
     let timers = [];
     projects.forEach(p => {
@@ -139,7 +148,7 @@ const fillProjects = () => {
             if(p.languages != null){
                 p._languages.forEach(l => {
                     const t = `<li>${l}</li>`;
-                    $(`#${p.id}.projects__card__bottom__langs`).append(t);
+                    $(`.${p.id}.projects__card__bottom__langs`).append(t);
                 });
             }
         }, 500);
@@ -175,9 +184,9 @@ $(document).ready(() => {
                 desc: r.description !== null ? r.description : "No description.",
                 upload_date: r.created_at.split("T")[0],
                 gh_link: r.html_url,
-                photo: `../Images/Projects/${r.id}.jpg`,
+                photo: `../Images/Projects/${r.id}.png`,
             }
-            projects.push(new Project(vars.id, vars.name, vars.rname, vars.desc, null, vars.photo, vars.gh_link, vars.upload));
+            projects.push(new Project(vars.id, vars.name, vars.rname, vars.desc, null, vars.photo, vars.gh_link, vars.upload, true));
         });
 
         projects.forEach(p => {
@@ -218,7 +227,7 @@ $(document).ready(() => {
 
 class Project {
     // name, description, Created_At (Upload Date), HTML_URL (Code Link), Show T/F
-    constructor(_id, _title, _realName, _desc, _langs, _picture, _ghLink, _upload) {
+    constructor(_id, _title, _realName, _desc, _langs, _picture, _ghLink, _upload, _show) {
         this.id = _id;
         this.title = _title;
         this.rName = _realName;
@@ -227,6 +236,7 @@ class Project {
         this.picture = _picture;
         this.githubLink = _ghLink;
         this.uploadDate = _upload;
+        this.show = _show;
     }
 
     get id() {

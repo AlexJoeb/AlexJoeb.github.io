@@ -344,10 +344,11 @@ svg path {
   grid-template-areas: "title button" "desc button" "langs button";
   align-items: center;
   grid-column-gap: 15px;
+  grid-gap: 5px;
 }
 .projects__card__bottom__title {
   grid-area: title;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .projects__card__bottom__desc {
@@ -378,7 +379,7 @@ svg path {
   text-align: center;
   color: #f4f4f4;
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   font-style: italic;
   border-radius: 6px;
   background: #3c91e6;
@@ -389,6 +390,34 @@ svg path {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+}
+
+.contact {
+  width: 100%;
+  height: auto;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.contact__header {
+  font-size: 1.4rem;
+  display: block;
+  margin: 25px 0;
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.contact form input {
+  flex-basis: 49%;
+}
+.contact form textarea {
+  flex-basis: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

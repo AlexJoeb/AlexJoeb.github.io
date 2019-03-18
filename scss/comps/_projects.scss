@@ -38,11 +38,12 @@
             @include grid($temp: 30px auto 60px / 3fr 1fr, $areas: "title button" "desc button" "langs button"){
                 align-items: center;
                 grid-column-gap: 15px;
+                grid-gap: 5px;
             }
 
             &__title{
                 grid-area: title;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 font-weight: bold;
             }
 
@@ -91,7 +92,7 @@
 
                 color:color(white);
                 text-decoration: none;
-                font-size: 1.3rem;
+                font-size: .8rem;
                 font-style: italic;
 
                 border-radius: 6px;

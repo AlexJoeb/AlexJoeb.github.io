@@ -1,0 +1,27 @@
+.contact {
+  width: 100%;
+  height: auto;
+
+  @include flex($dir:column){
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__header{
+    font-size: 1.4rem;
+    display:block;
+    margin: 25px 0;
+  }
+
+  form{
+    @include flex($dir: column, $wrap: wrap);
+
+    input{
+      flex-basis: 49%;
+
+    }
+    textarea{
+      flex-basis: 100%;
+    }
+  }
+}
