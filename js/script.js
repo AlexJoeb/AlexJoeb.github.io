@@ -30,18 +30,18 @@ const skills = {
     softskills: {
         path: ssUL,
         list: ["Clarity",
-            "Confidence",
-            "Respect",
-            "Empathy",
-            "Listening",
-            "Dedication",
-            "Verbal Communication",
-            "Non-verbal Communication",
-            "Written Communication",
-            "Constructive Feedback",
-            "Friendliness",
-        ],
-    },
+        "Confidence",
+        "Respect",
+        "Empathy",
+        "Listening",
+        "Dedication",
+        "Verbal Communication",
+        "Non-verbal Communication",
+        "Written Communication",
+        "Constructive Feedback",
+        "Friendliness",
+    ],
+},
 };
 
 let projects = [];
@@ -57,9 +57,61 @@ $(".hamburger").click((evt) => {
     $(".nav--wrapper").slideToggle();
 });
 
+$(".contact form").click((e) => {
+    e.preventDefault();
+    const t = e.target;
+    if (t.name == 'submit') {
+        if ($(`.contact input[name='name']`).val() == '' || $(`.contact input[name='email']`).val() == '' || $(`.contact textarea[name='message']`).val() == '') {
+            alert(`You forgot to enter something!`);
+        }else{
+            clearFields();
+            alert(`Message sent.`, `success`);
+        }
+    }
+    if (t.name == 'clear') {
+        clearFields();
+        alert(`All field are clear.`, `info`);
+    }
+});
+
+$(`.nav--mobile a.navbutton`).click(() => {
+    $(`.hamburger`).removeClass(`close`);
+    $(`.nav--wrapper`).slideToggle();
+});
+
 // ========================
 // = Functions 
 // ========================
+
+const clearFields = () => {
+    $(`.contact input[name='name']`).val('');
+    $(`.contact input[name='email']`).val('');
+    $(`.contact textarea[name='message']`).val('');
+}
+
+const alert = (msg, type = 'warn') => {
+    let div = $('.contact__alert');
+    let p = $('.contact__alert p');
+    let m = msg || `<strong>Opps!</strong> No message defined.`;
+    if (type == 'warn') {
+        console.log("D");
+        m = `<strong>Opps!</strong> ` + m;
+        div.css(`background`, `#C21807`);
+    } else if (type == 'info') {
+        m = `<strong>Hey!</strong> ` + m;
+        div.css(`background`, `#3C91E6`);
+    } else if (type == 'success') {
+        m = `<strong>Yay!</strong> ` + m;
+        div.css(`background`, `#9FD356`);
+    }
+    
+    p.html(m);
+    div.slideToggle(500, () => {
+        setTimeout(() => {
+            div.slideToggle(500);
+        }, 3000);
+    });
+}
 
 const getHamburger = t => {
     if ($(t).hasClass("hamburger__slice")) {
@@ -116,7 +168,6 @@ const getProjectByID = id => {
 const fillProjects = () => {
     getProjectByID(175998035).show = false;
     projects.forEach(p => {
-        console.log(p.title + " : " + p.id + " : " + p.picture);
         let markup = `
             <div class="projects__card">
                 <div class="projects__card__top ${p.id}"></div>
@@ -129,23 +180,23 @@ const fillProjects = () => {
                 </div>
             </div>
         `;
-        
-        if(!p.show){
+
+        if (!p.show) {
             markup = ``;
         }
 
         const temp = $(`${markup}`);
 
-        
+
         projDiv.append(temp);
-        $(`.projects__card__top.${p.id}`).css('background', `url(${p.picture}) no-repeat center center`);
+        $(`.projects__card__top.${p.id}`).css('background', `url(${p.picture}) no-repeat center top`);
         $(`.projects__card__top.${p.id}`).css('background-size', `cover`);
-        
+
     });
     let timers = [];
     projects.forEach(p => {
         let timer = setInterval(() => {
-            if(p.languages != null){
+            if (p.languages != null) {
                 p._languages.forEach(l => {
                     const t = `<li>${l}</li>`;
                     $(`.${p.id}.projects__card__bottom__langs`).append(t);
@@ -160,6 +211,8 @@ const fillProjects = () => {
             clearInterval(t);
         });
     }, 550);
+
+    $('.contact__alert').hide();
 }
 
 // ========================
@@ -205,9 +258,9 @@ $(document).ready(() => {
                 path._languages = ls;
             });
         });
-        fillProjects(); 
+        fillProjects();
     });
-    
+
     for (let skill in skills) {
         const s = skills[`${skill}`];
         const path = s.path || null;
@@ -218,7 +271,7 @@ $(document).ready(() => {
         }
     }
 
-    
+
 });
 
 // ========================

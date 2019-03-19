@@ -161,6 +161,9 @@ svg path {
   background: #69abec;
   color: #f4f4f4;
 }
+.sidebar a {
+  color: #f4f4f4;
+}
 .sidebar span {
   font-weight: 100;
 }
@@ -245,6 +248,10 @@ svg path {
 .nav--mobile ul li + li {
   margin-top: 15px;
 }
+.nav--mobile ul a {
+  color: #f4f4f4;
+  text-decoration: none;
+}
 .nav--mobile__socials {
   width: 100%;
   height: auto;
@@ -277,8 +284,6 @@ svg path {
 .skills__dev {
   flex-basis: 100%;
   padding: 0 15px 25px;
-  background: white;
-  border-radius: 10px;
 }
 .skills__dev {
   display: grid;
@@ -317,22 +322,61 @@ svg path {
   padding: 25px 15px;
   background: #80b7ef;
 }
+.projects {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+@media only screen and (min-width: 768px) {
+  .projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+}
 .projects__card {
+  width: 100%;
   border-radius: 15px;
+  margin-bottom: 15px;
 }
 .projects__card + .projects__card {
   margin-top: 25px;
 }
+@media only screen and (min-width: 768px) {
+  .projects__card {
+    width: 48%;
+  }
+  .projects__card + .projects__card {
+    margin-top: 0;
+  }
+  .projects__card:last-of-type {
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .projects__card {
+    width: 30%;
+  }
+  .projects__card + .projects__card {
+    margin-top: 0;
+  }
+  .projects__card:last-of-type {
+    margin-bottom: 0;
+  }
+}
 .projects__card__top {
   width: 100%;
   height: 150px;
+  border: 3px solid #f4f4f4;
   background: rgba(60, 145, 230, 0.5);
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 .projects__card__bottom {
   width: 100%;
-  height: auto;
+  height: 200px;
   background: #f4f4f4;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -395,6 +439,7 @@ svg path {
 .contact {
   width: 100%;
   height: auto;
+  padding-bottom: 35px;
 }
 .contact {
   display: flex;
@@ -409,15 +454,63 @@ svg path {
   margin: 25px 0;
 }
 .contact form {
+  width: 80%;
+  height: auto;
+}
+.contact form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
+.contact form div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.contact form div button {
+  width: 49%;
+  height: 40px;
+  border: 0;
+  background: #3c91e6;
+  color: white;
+  font-weight: bold;
+}
+.contact form div button:hover {
+  cursor: pointer;
+}
 .contact form input {
-  flex-basis: 49%;
+  width: 48%;
+  border: 0;
+  background: #f4f4f4;
+  border-bottom: 2px solid #3c91e6;
+}
+.contact form input:focus, .contact form input:active {
+  outline: none;
 }
 .contact form textarea {
-  flex-basis: 100%;
+  width: 100%;
+  height: 150px;
+  margin: 15px 0;
+  border: 2px solid #3c91e6;
+  background: #f4f4f4;
+}
+.contact form textarea:focus, .contact form textarea:active {
+  outline: none;
+}
+.contact__alert {
+  width: 100%;
+  height: 40px;
+  background: red;
+  color: white;
+  margin-bottom: 25px;
+}
+.contact__alert {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas: none;
+  justify-items: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
