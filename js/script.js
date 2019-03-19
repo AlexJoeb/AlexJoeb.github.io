@@ -237,7 +237,7 @@ $(document).ready(() => {
                 desc: r.description !== null ? r.description : "No description.",
                 upload_date: r.created_at.split("T")[0],
                 gh_link: r.html_url,
-                photo: `../Images/Projects/${r.id}.png`,
+                photo: `../Images/ProjectImages/${r.id}.png`,
             }
             projects.push(new Project(vars.id, vars.name, vars.rname, vars.desc, null, vars.photo, vars.gh_link, vars.upload, true));
         });
